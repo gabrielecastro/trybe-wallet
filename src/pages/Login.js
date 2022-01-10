@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { saveEmail } from '../actions';
-/* import '../css/Login.css'; */
 
 class Login extends React.Component {
   constructor() {
