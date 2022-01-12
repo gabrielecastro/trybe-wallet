@@ -1,6 +1,9 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 
-import { SAVE_FORM_WALLET } from '../actions';
+import { GET_INFOS_API,
+  GET_INFOS_API_SUCCESS,
+  GET_INFOS_API_FAIL,
+  SAVE_FORM_WALLET } from '../actions';
 
 const initialState = {
   expenses: [
@@ -13,6 +16,9 @@ const initialState = {
       tag: 'alimentação',
     },
   ],
+  exchangeRates: {},
+  loading: false,
+  error: '',
 };
 
 const wallet = (state = initialState, action) => {
@@ -21,6 +27,22 @@ const wallet = (state = initialState, action) => {
     return {
       ...state,
       expenses: action.payload,
+    };
+  case GET_INFOS_API:
+    return {
+      ...state,
+      loading: true,
+    };
+  case GET_INFOS_API_SUCCESS:
+    return {
+      ...state,
+      exchangeRates: action.payload,
+      loading: false,
+    };
+  case GET_INFOS_API_FAIL:
+    return {
+      ...state,
+      error: 'ERRO NA API',
     };
   default:
     return state;
