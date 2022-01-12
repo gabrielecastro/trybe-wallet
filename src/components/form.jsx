@@ -11,7 +11,7 @@ class Form extends Component {
       id: 0,
       value: '',
       description: '',
-      currency: '',
+      currency: 'USD',
       method: 'dinheiro',
       tag: 'alimentação',
     };
@@ -32,6 +32,11 @@ class Form extends Component {
 
   render() {
     const { value, description, currency, method, tag } = this.state;
+    const { currencies } = this.props;
+    /* console.log(exchangeRates); */
+    /* const currencies = Object.keys(exchangeRates); */
+    /*     console.log(currencys);
+ */
     return (
       <section>
         <div>
@@ -52,14 +57,31 @@ class Form extends Component {
               value={ description }
               name="description"
             />
-            <input
-              data-testid="currency-input"
-              type="text"
-              placeholder="Moeda"
-              onChange={ this.handleChange }
-              value={ currency }
-              name="currency"
-            />
+            <label htmlFor="moeda">
+              {/* Moeda */}
+              <select
+                id="moeda"
+                onChange={ this.handleChange }
+                data-testid="currency-input"
+                value={ currency }
+                name="currency"
+                aria-label="moeda"
+
+              >
+                {currencies
+                  .filter((cur) => cur !== 'USDT')
+                  .map((elem) => (
+                    <option
+                      data-testid={ elem }
+                      value={ elem }
+                      key={ elem }
+                      name="moeda"
+                    >
+                      {elem}
+                    </option>
+                  ))}
+              </select>
+            </label>
             <select
               value={ method }
               name="method"
@@ -99,10 +121,16 @@ class Form extends Component {
 
 Form.propTypes = {
   dispatchSaveForm: PropTypes.func.isRequired,
+  currencies: PropTypes.objectOf(PropTypes.string).isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  exchangeRates: state.wallet.exchangeRates,
+  currencies: state.wallet.currencies,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchSaveForm: (infos) => dispatch(saveFormWallet(infos)),
 });
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

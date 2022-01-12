@@ -17,6 +17,7 @@ const initialState = {
     },
   ],
   exchangeRates: {},
+  currencies: [],
   loading: false,
   error: '',
 };
@@ -37,6 +38,7 @@ const wallet = (state = initialState, action) => {
     return {
       ...state,
       exchangeRates: action.payload,
+      currencies: Object.keys(action.payload),
       loading: false,
     };
   case GET_INFOS_API_FAIL:
