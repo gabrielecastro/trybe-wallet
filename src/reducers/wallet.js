@@ -9,6 +9,7 @@ const initialState = {
   expenses: [],
   currencies: [],
   error: '',
+  values: [],
 };
 
 const wallet = (state = initialState, action) => {
@@ -28,6 +29,7 @@ const wallet = (state = initialState, action) => {
           exchangeRates: state.exchangeRates,
         },
       ],
+      values: [...state.values, Number(action.payload.value)],
     };
   case GET_INFOS_API:
     return {

@@ -109,7 +109,7 @@ class Form extends Component {
               type="button"
               onClick={ this.onSubmitForm }
             >
-              Adicionar
+              Adicionar despesa
             </button>
           </form>
         </div>
