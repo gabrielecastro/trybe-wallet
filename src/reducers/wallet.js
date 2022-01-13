@@ -9,7 +9,6 @@ const initialState = {
   expenses: [],
   currencies: [],
   error: '',
-  values: [],
 };
 
 const wallet = (state = initialState, action) => {
