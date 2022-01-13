@@ -6,19 +6,8 @@ import { GET_INFOS_API,
   SAVE_FORM_WALLET } from '../actions';
 
 const initialState = {
-  expenses: [
-    {
-      id: 0,
-      value: '',
-      description: '',
-      currency: '',
-      method: 'dinheiro',
-      tag: 'alimentação',
-    },
-  ],
-  exchangeRates: {},
+  expenses: [],
   currencies: [],
-  loading: false,
   error: '',
 };
 
@@ -27,19 +16,28 @@ const wallet = (state = initialState, action) => {
   case SAVE_FORM_WALLET:
     return {
       ...state,
-      expenses: action.payload,
+      expenses: [
+        /* state.expenses, */
+        {
+          id: state.expenses.length,
+          value: action.payload.value,
+          description: action.payload.description,
+          currency: action.payload.currency,
+          method: action.payload.method,
+          tag: action.payload.tag,
+          exchangeRates: state.exchangeRates,
+        },
+      ],
     };
   case GET_INFOS_API:
     return {
       ...state,
-      loading: true,
     };
   case GET_INFOS_API_SUCCESS:
     return {
       ...state,
       exchangeRates: action.payload,
       currencies: Object.keys(action.payload),
-      loading: false,
     };
   case GET_INFOS_API_FAIL:
     return {

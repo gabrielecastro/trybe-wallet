@@ -57,31 +57,30 @@ class Form extends Component {
               value={ description }
               name="description"
             />
-            <label htmlFor="moeda">
-              {/* Moeda */}
-              <select
-                id="moeda"
-                onChange={ this.handleChange }
-                data-testid="currency-input"
-                value={ currency }
-                name="currency"
-                aria-label="moeda"
 
-              >
-                {currencies
-                  .filter((cur) => cur !== 'USDT')
-                  .map((elem) => (
-                    <option
-                      data-testid={ elem }
-                      value={ elem }
-                      key={ elem }
-                      name="moeda"
-                    >
-                      {elem}
-                    </option>
-                  ))}
-              </select>
-            </label>
+            <select
+              id="moeda"
+              onChange={ this.handleChange }
+              data-testid="currency-input"
+              value={ currency }
+              name="currency"
+              aria-label="moeda"
+
+            >
+              {currencies
+                .filter((cur) => cur !== 'USDT')
+                .map((elem) => (
+                  <option
+                    data-testid={ elem }
+                    value={ elem }
+                    key={ elem }
+                    name="moeda"
+                  >
+                    {elem}
+                  </option>
+                ))}
+            </select>
+
             <select
               value={ method }
               name="method"
