@@ -4,10 +4,20 @@ import PropTypes from 'prop-types';
 
 class Header extends Component {
   sumValues = () => {
-    const { value } = this.props;
-    if (value !== 0) {
+    /* const { value } = this.props;
+    console.log(value)
+    if (value !== []) {
       const valueTotal = value.reduce((acc, prev) => acc + prev, 0);
       return valueTotal;
+    }
+    return 0; */
+
+    const { totalExpenses } = this.props;
+    const TotalValue = totalExpenses
+      .map(({ exchangeRates, currency, value }) => (exchangeRates[currency].ask) * value);
+    if (TotalValue !== []) {
+      const total = TotalValue.reduce((acc, crr) => acc + crr, 0);
+      return total.toFixed(2);
     }
     return 0;
   }
@@ -30,12 +40,12 @@ class Header extends Component {
 
 Header.propTypes = {
   email: PropTypes.string.isRequired,
-  value: PropTypes.arrayOf.isRequired,
+  totalExpenses: PropTypes.arrayOf.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
-  value: state.wallet.values,
+  totalExpenses: state.wallet.expenses,
 });
 
 export default connect(mapStateToProps)(Header);
