@@ -119,10 +119,34 @@ class Form extends Component {
               data-testid="tag-input"
               onChange={ this.handleChange }
             >
-              <option name="Alimentação" key="Alimentação" value="Alimentação">Alimentação</option>
-              <option name="Lazer" key="Lazer" value="Lazer">Lazer</option>
-              <option name="Trabalho" key="Trabalho" value="Trabalho">Trabalho</option>
-              <option name="Transporte" key="Transporte" value="Transporte">Transporte</option>
+              <option
+                name="Alimentação"
+                key="Alimentação"
+                value="Alimentação"
+              >
+                Alimentação
+              </option>
+              <option
+                name="Lazer"
+                key="Lazer"
+                value="Lazer"
+              >
+                Lazer
+              </option>
+              <option
+                name="Trabalho"
+                key="Trabalho"
+                value="Trabalho"
+              >
+                Trabalho
+              </option>
+              <option
+                name="Transporte"
+                key="Transporte"
+                value="Transporte"
+              >
+                Transporte
+              </option>
               <option name="Saúde" key="Saúde" value="Saúde">Saúde</option>
             </select>
 
