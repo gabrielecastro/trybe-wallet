@@ -18,6 +18,7 @@ class Table extends Component {
             <th role="columnheader">Câmbio utilizado</th>
             <th role="columnheader">Valor convertido</th>
             <th role="columnheader">Moeda de conversão</th>
+            <th role="columnheader">Editar/Excluir</th>
           </tr>
         </thead>
         <tbody>
