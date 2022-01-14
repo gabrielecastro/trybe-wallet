@@ -107,9 +107,27 @@ class Form extends Component {
               data-testid="method-input"
               onChange={ this.handleChange }
             >
-              <option name="Dinheiro" key="Dinheiro" value="Dinheiro">Dinheiro</option>
-              <option name="Cartão de crédito" key="Cartão de crédito" value="Cartão de crédito">Cartão de crédito</option>
-              <option name="Cartão de débito" key="Cartão de débito" value="Cartão de débito">Cartão de débito</option>
+              <option
+                name="Dinheiro"
+                key="Dinheiro"
+                value="Dinheiro"
+              >
+                Dinheiro
+              </option>
+              <option
+                name="Cartão de crédito"
+                key="Cartão de crédito"
+                value="Cartão de crédito"
+              >
+                Cartão de crédito
+              </option>
+              <option
+                name="Cartão de débito"
+                key="Cartão de débito"
+                value="Cartão de débito"
+              >
+                Cartão de débito
+              </option>
             </select>
 
             <select
