@@ -3,7 +3,8 @@
 import { GET_INFOS_API,
   GET_INFOS_API_SUCCESS,
   GET_INFOS_API_FAIL,
-  SAVE_FORM_WALLET } from '../actions';
+  SAVE_FORM_WALLET,
+  DELETE_ITEM } from '../actions';
 
 const initialState = {
   expenses: [],
@@ -44,6 +45,11 @@ const wallet = (state = initialState, action) => {
     return {
       ...state,
       error: 'ERRO NA API',
+    };
+  case DELETE_ITEM:
+    return {
+      ...state,
+      expenses: state.expenses.filter((expense) => expense.payload !== action.payload),
     };
   default:
     return state;

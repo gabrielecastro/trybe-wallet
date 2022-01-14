@@ -6,6 +6,7 @@ export const SAVE_FORM_WALLET = 'SAVE_FORM_WALLET';
 export const GET_INFOS_API = 'GET_INFOS_API';
 export const GET_INFOS_API_SUCCESS = 'GET_INFOS_API_SUCCESS';
 export const GET_INFOS_API_FAIL = 'GET_INFOS_API_FAIL';
+export const DELETE_ITEM = 'DELETE_ITEM';
 
 export const saveEmail = (payload) => (
   {
@@ -31,6 +32,10 @@ export const getInfosAPISuccess = (payload) => ({
 // Action caso a requisição dê errado
 export const getInfosAPIFail = () => ({
   type: GET_INFOS_API_FAIL,
+});
+
+export const deteleItem = (payload) => ({
+  type: DELETE_ITEM, payload,
 });
 
 // Função que retorna outra função e faz a requisição para a API
