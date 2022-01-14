@@ -26,7 +26,7 @@ const wallet = (state = initialState, action) => {
           currency: action.payload.currency,
           method: action.payload.method,
           tag: action.payload.tag,
-          exchangeRates: state.exchangeRates,
+          exchangeRates: action.payload.exchangeRates,
         },
       ],
       /* values: [...state.values, Number(action.payload.value)], */
@@ -38,7 +38,6 @@ const wallet = (state = initialState, action) => {
   case GET_INFOS_API_SUCCESS:
     return {
       ...state,
-      exchangeRates: action.payload,
       currencies: Object.keys(action.payload),
     };
   case GET_INFOS_API_FAIL:

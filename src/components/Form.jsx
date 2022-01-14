@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { saveFormWallet } from '../actions';
+import getCurrency from '../services/currencyAPI';
 
 class Form extends Component {
   constructor() {
@@ -12,8 +13,9 @@ class Form extends Component {
       value: '',
       description: '',
       currency: 'USD',
-      method: 'dinheiro',
-      tag: 'alimentação',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
+      exchangeRates: {},
     };
   }
 
@@ -24,10 +26,27 @@ class Form extends Component {
     });
   }
 
-  onSubmitForm = (event) => {
+  onSubmitForm = async (event) => {
     event.preventDefault();
-    const { dispatchSaveForm } = this.props;
-    dispatchSaveForm(this.state);
+    const response = await getCurrency();
+    /* .filter((cur) => cur !== 'USDT'); */
+    this.setState({ exchangeRates: response }, () => {
+      const { dispatchSaveForm } = this.props;
+      dispatchSaveForm(this.state);
+      this.clearInputs();
+    });
+  }
+
+  clearInputs = () => {
+    this.setState({
+      id: 0,
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: '',
+      tag: '',
+      exchangeRates: {},
+    });
   }
 
   render() {
@@ -82,27 +101,29 @@ class Form extends Component {
             </select>
 
             <select
+              id="method"
               value={ method }
               name="method"
               data-testid="method-input"
               onChange={ this.handleChange }
             >
-              <option value="dinheiro">Dinheiro</option>
-              <option value="cartao-credito">Cartão de crédito</option>
-              <option value="cartao-debito">Cartão de débito</option>
+              <option name="Dinheiro" key="Dinheiro" value="Dinheiro">Dinheiro</option>
+              <option name="Cartão de crédito" key="Cartão de crédito" value="Cartão de crédito">Cartão de crédito</option>
+              <option name="Cartão de débito" key="Cartão de débito" value="Cartão de débito">Cartão de débito</option>
             </select>
 
             <select
+              id="tag"
               value={ tag }
               name="tag"
               data-testid="tag-input"
               onChange={ this.handleChange }
             >
-              <option value="alimentacao">Alimentação</option>
-              <option value="lazer">Lazer</option>
-              <option value="trabalho">Trabalho</option>
-              <option value="transporte">Transporte</option>
-              <option value="saude">Saúde</option>
+              <option name="Alimentação" key="Alimentação" value="Alimentação">Alimentação</option>
+              <option name="Lazer" key="Lazer" value="Lazer">Lazer</option>
+              <option name="Trabalho" key="Trabalho" value="Trabalho">Trabalho</option>
+              <option name="Transporte" key="Transporte" value="Transporte">Transporte</option>
+              <option name="Saúde" key="Saúde" value="Saúde">Saúde</option>
             </select>
 
             <button
