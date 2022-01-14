@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getInfosThunk } from '../actions';
-import Form from '../components/form';
+import Form from '../components/Form';
 import Header from '../components/Header';
 import Table from '../components/Table';
 
