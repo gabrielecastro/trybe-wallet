@@ -29,8 +29,8 @@ const wallet = (state = initialState, action) => {
           exchangeRates: action.payload.exchangeRates,
         },
       ],
-      /* values: [...state.values, Number(action.payload.value)], */
     };
+
   case GET_INFOS_API:
     return {
       ...state,
@@ -48,7 +48,7 @@ const wallet = (state = initialState, action) => {
   case DELETE_ITEM:
     return {
       ...state,
-      expenses: state.expenses.filter((expense) => expense.payload !== action.payload),
+      expenses: state.expenses.filter((expense) => expense.id !== action.id),
     };
   default:
     return state;

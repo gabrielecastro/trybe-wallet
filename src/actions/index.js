@@ -7,6 +7,13 @@ export const GET_INFOS_API = 'GET_INFOS_API';
 export const GET_INFOS_API_SUCCESS = 'GET_INFOS_API_SUCCESS';
 export const GET_INFOS_API_FAIL = 'GET_INFOS_API_FAIL';
 export const DELETE_ITEM = 'DELETE_ITEM';
+/* export const DELETE_EXPENSE = 'DELETE_EXPENSE'; */
+
+/* export const deleteExpense = (id) => (
+  {
+    type: DELETE_EXPENSE, id,
+  }
+); */
 
 export const saveEmail = (payload) => (
   {
@@ -34,8 +41,8 @@ export const getInfosAPIFail = () => ({
   type: GET_INFOS_API_FAIL,
 });
 
-export const deteleItem = (payload) => ({
-  type: DELETE_ITEM, payload,
+export const deteleItem = (id) => ({
+  type: DELETE_ITEM, id,
 });
 
 // Função que retorna outra função e faz a requisição para a API
