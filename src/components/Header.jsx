@@ -30,8 +30,11 @@ class Header extends Component {
           <div className="email-user">
             <span data-testid="email-field">{ email }</span>
           </div>
-          <span data-testid="total-field">{ this.sumValues() }</span>
-          <span data-testid="header-currency-field" className="cambio-header">BRL</span>
+          <div className="container-value-total">
+            <span data-testid="total-field">{ this.sumValues() }</span>
+            <span data-testid="header-currency-field" className="cambio-header">BRL</span>
+          </div>
+
         </div>
       </header>
     );

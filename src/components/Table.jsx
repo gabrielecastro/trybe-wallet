@@ -9,51 +9,55 @@ class Table extends Component {
     console.log(infos);
     return (
       <table>
-        <thead>
-          <tr>
-            <th role="columnheader">Descrição</th>
-            <th role="columnheader">Tag</th>
-            <th role="columnheader">Método de pagamento</th>
-            <th role="columnheader">Valor</th>
-            <th role="columnheader">Moeda</th>
-            <th role="columnheader">Câmbio utilizado</th>
-            <th role="columnheader">Valor convertido</th>
-            <th role="columnheader">Moeda de conversão</th>
-            <th role="columnheader">Editar/Excluir</th>
-          </tr>
-        </thead>
+        <div className="div-table">
+          <thead>
+            <tr className="tr-table">
+              <th role="columnheader">Descrição</th>
+              <th role="columnheader">Tag</th>
+              <th role="columnheader">Método de pagamento</th>
+              <th role="columnheader">Valor</th>
+              <th role="columnheader">Moeda</th>
+              <th role="columnheader">Câmbio utilizado</th>
+              <th role="columnheader">Valor convertido</th>
+              <th role="columnheader">Moeda de conversão</th>
+              <th role="columnheader">Editar/Excluir</th>
+            </tr>
+          </thead>
+        </div>
         <tbody>
           {
             infos !== [] && (
               infos.map((
                 { id, description, tag, method, value, exchangeRates, currency },
               ) => (
-                <tr key={ id }>
-                  <td>{description}</td>
-                  <td>{tag}</td>
-                  <td>{method}</td>
-                  <td>{value}</td>
-                  <td>{exchangeRates[currency].name.split('/', 1)}</td>
-                  <td>{Number(exchangeRates[currency].ask).toFixed(2)}</td>
-                  <td>
-                    {
-                      (Number(exchangeRates[currency].ask)
-                        * Number(value))
-                        .toFixed(2)
-                    }
-                  </td>
-                  <td>Real</td>
-                  <td>
-                    <button
-                      className="delete-btn"
-                      type="button"
-                      data-testid="delete-btn"
-                      onClick={ () => dispatchDeleteItem(id) }
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
+                <div key={ id } className="div-table">
+                  <tr>
+                    <td>{description}</td>
+                    <td>{tag}</td>
+                    <td>{method}</td>
+                    <td>{value}</td>
+                    <td>{exchangeRates[currency].name.split('/', 1)}</td>
+                    <td>{Number(exchangeRates[currency].ask).toFixed(2)}</td>
+                    <td>
+                      {
+                        (Number(exchangeRates[currency].ask)
+                          * Number(value))
+                          .toFixed(2)
+                      }
+                    </td>
+                    <td>Real</td>
+                    <td>
+                      <button
+                        className="delete-btn"
+                        type="button"
+                        data-testid="delete-btn"
+                        onClick={ () => dispatchDeleteItem(id) }
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </div>
               ))
             )
           }

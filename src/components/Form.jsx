@@ -59,7 +59,7 @@ class Form extends Component {
     return (
       <section>
         <div>
-          <form>
+          <form className="form-header">
             <input
               data-testid="value-input"
               type="text"
@@ -69,6 +69,7 @@ class Form extends Component {
               name="value"
             />
             <input
+              className="description-input"
               data-testid="description-input"
               type="text"
               placeholder="Descrição"
@@ -169,6 +170,7 @@ class Form extends Component {
             </select>
 
             <button
+              className="btn-form"
               type="button"
               onClick={ this.onSubmitForm }
             >
