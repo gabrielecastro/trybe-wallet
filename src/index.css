@@ -93,14 +93,13 @@ th {
 }
 
 td {
-  padding-left: 70px;
-  padding-top: 25px;
+  margin: auto;
+  padding: auto;
 }
 
 
 .div-table {
-  padding-right: 40px;
-  padding-left: -30px;
+  padding-right: auto;
 }
 
 .cambio-header {
@@ -110,3 +109,32 @@ td {
 .delete-btn {
   background-color: rgb(255, 81, 81);
 }
+
+table {
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  padding-bottom: auto;
+  padding-right: 15px;
+  text-align: center;
+}
+
+.container-table {
+  padding: 20px;
+}
+
+thead {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+
+tr {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+

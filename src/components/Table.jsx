@@ -8,8 +8,8 @@ class Table extends Component {
     const { infos, dispatchDeleteItem } = this.props;
     console.log(infos);
     return (
-      <table>
-        <div className="div-table">
+      <div className="container-table">
+        <table>
           <thead>
             <tr className="tr-table">
               <th role="columnheader">Descrição</th>
@@ -23,46 +23,46 @@ class Table extends Component {
               <th role="columnheader">Editar/Excluir</th>
             </tr>
           </thead>
-        </div>
-        <tbody>
-          {
-            infos !== [] && (
-              infos.map((
-                { id, description, tag, method, value, exchangeRates, currency },
-              ) => (
-                <div key={ id } className="div-table">
-                  <tr>
-                    <td>{description}</td>
-                    <td>{tag}</td>
-                    <td>{method}</td>
-                    <td>{value}</td>
-                    <td>{exchangeRates[currency].name.split('/', 1)}</td>
-                    <td>{Number(exchangeRates[currency].ask).toFixed(2)}</td>
-                    <td>
-                      {
-                        (Number(exchangeRates[currency].ask)
+          <tbody>
+            {
+              infos !== [] && (
+                infos.map((
+                  { id, description, tag, method, value, exchangeRates, currency },
+                ) => (
+                  <div key={ id } className="div-table">
+                    <tr className="tr-header">
+                      <td>{description}</td>
+                      <td>{tag}</td>
+                      <td>{method}</td>
+                      <td>{value}</td>
+                      <td>{exchangeRates[currency].name.split('/', 1)}</td>
+                      <td>{Number(exchangeRates[currency].ask).toFixed(2)}</td>
+                      <td>
+                        {
+                          (Number(exchangeRates[currency].ask)
                           * Number(value))
-                          .toFixed(2)
-                      }
-                    </td>
-                    <td>Real</td>
-                    <td>
-                      <button
-                        className="delete-btn"
-                        type="button"
-                        data-testid="delete-btn"
-                        onClick={ () => dispatchDeleteItem(id) }
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                </div>
-              ))
-            )
-          }
-        </tbody>
-      </table>
+                            .toFixed(2)
+                        }
+                      </td>
+                      <td>Real</td>
+                      <td>
+                        <button
+                          className="delete-btn"
+                          type="button"
+                          data-testid="delete-btn"
+                          onClick={ () => dispatchDeleteItem(id) }
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  </div>
+                ))
+              )
+            }
+          </tbody>
+        </table>
+      </div>
     );
   }
 }
