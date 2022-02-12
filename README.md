@@ -6,7 +6,7 @@ Neste projeto é desenvolvido uma carteira de controle de gastos com conversor d
 
 ### Tecnologias usadas
 
->React, Redux, JavaScript, HTML, CSS
+>React, Redux, Redux-thunk JavaScript, HTML, CSS
 
 ### Instalação do projeto
 
